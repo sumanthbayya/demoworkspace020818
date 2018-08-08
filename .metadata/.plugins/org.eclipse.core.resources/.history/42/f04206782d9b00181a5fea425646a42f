@@ -18,9 +18,4 @@ public class SubCategoryService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public void deleteSubCategoryByCategoryAndDepartmentAndLocation(String subcategory_id) {
-		// TODO Auto-generated method stub
-		
-	}
 }

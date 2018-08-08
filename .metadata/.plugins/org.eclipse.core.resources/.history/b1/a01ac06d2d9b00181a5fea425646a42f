@@ -17,9 +17,4 @@ public class CategoryService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public void deleteCategoryByDepartmentAndLocation(String category_id) {
-		// TODO Auto-generated method stub
-		
-	}
 }
