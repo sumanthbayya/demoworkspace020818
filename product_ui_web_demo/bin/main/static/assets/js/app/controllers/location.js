@@ -29,9 +29,9 @@ productApp.controller("locationController",["$scope","locationService","$route",
 	}
 	
 	
-	$scope.processSave = function(collection){
-		console.log(collection);
-	}
+//	$scope.processSave = function(collection){
+//		console.log(collection);
+//	}
 	
 	$scope.hideDatatable=function(){
 		$scope.collapseFlag = false;

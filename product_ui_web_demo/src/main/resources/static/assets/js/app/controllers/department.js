@@ -2,15 +2,17 @@
  * @author manikanta.nsk
  */
 
-productApp.controller("departmentController",["$scope","locationService","$route","$timeout",function($scope,locationService,$route,$timeout) {
+productApp.controller("departmentController",["$scope","locationService","departmentService","$route","$timeout",function($scope,locationService,departmentService,$route,$timeout) {
 	
 	$scope.init = function(){
+		$scope.locationDropDown=[];
 		locationService.getAllLocations().then(
 	  			function(data){
 						 $scope.locationDrop=data;
+						 console.log(data);
 						 $scope.$watch('locationDrop',function(){
 							 angular.forEach($scope.locationDrop,function(values){
-								$scope.locationDropDown.push({key: values.locationId,value : values.locationName}); 
+								$scope.locationDropDown.push({key: values.id,value : values.locationName}); 
 							 });
 							 console.log($scope.locationDropDown);
 						 });
@@ -23,8 +25,9 @@ productApp.controller("departmentController",["$scope","locationService","$route
 	  			);
 		
 		
-		locationService.getAllDepartments().then(
+		departmentService.getAllDepartments().then(
 	  			function(data){
+	  				console.log(data);
 						 $scope.collection=data;
 				    	  $scope.departmentData = [].concat($scope.collection);
 				    	  $scope.rowCollection= data;
@@ -44,9 +47,6 @@ productApp.controller("departmentController",["$scope","locationService","$route
 	}
 	
 	
-	$scope.processSave = function(collection){
-		console.log(collection);
-	}
 	
 	$scope.hideDatatable=function(){
 		$scope.collapseFlag = false;

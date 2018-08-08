@@ -32,7 +32,7 @@
 						<th st-sort="departmentName" scope="col">Department</th>
 						<th st-sort="departmentDesc" scope="col">Description</th>
 						<th st-sort="locationName" scope="col">Location</th>
-						<th st-sort="active" scope="col">Status</th>
+						<th st-sort="activeFlag" scope="col">Status</th>
 						
 						
 					</tr>
@@ -46,17 +46,29 @@
 					
 						<td row-select="row" ng-click="select(row.id)" selectdt="row.selected"></td>
 				<!-- 		<td >{{row.id}}</td> -->
-						<td ng-if="!dataadd && !row.selected">{{row.locationName}}</td>
+						<td ng-if="!dataadd && !row.selected">{{row.departmentName}}</td>
 								<td ng-if="dataadd || row.selected"><input
-							type="text" class="form-control" ng-model="row.locationName"/></td>
+							type="text" class="form-control" ng-model="row.departmentName"/></td>
 							<td
-							ng-if="!dataadd && !row.selected">{{row.locationDesc}}</td>
+							ng-if="!dataadd && !row.selected">{{row.departmentDesc}}</td>
 						<td ng-if="dataadd || row.selected"><input
-							type="text" class="form-control" ng-model="row.locationDesc"/></td>
+							type="text" class="form-control" ng-model="row.departmentDesc"/></td>
 							<td
-							ng-if="!dataadd && !row.selected">{{row.active}}</td>
+							ng-if="!dataadd && !row.selected">{{row.locationName}}</td>
+						<td ng-if="dataadd || row.selected">
+						<!-- <select
+								ng-model="row.locationName" class="form-control classic"
+								ng-options="sta.value for (x,y) in locationDropDown track by sta.key"></select> -->
+								<select ng-model="row.locationName" class="form-control classic" >
+									<option  ng-repeat="x in locationDropDown" value="{{x.value}}">{{x.value}}</option>
+								</select>
+							
+					</td>
+							
+							<td
+							ng-if="!dataadd && !row.selected">{{row.activeFlag}}</td>
 						<td ng-if="dataadd || row.selected"><input
-							type="text" class="form-control" ng-model="row.active"/></td>
+							type="text" class="form-control" ng-model="row.activeFlag"/></td>
 							
 						
 					</tr>
