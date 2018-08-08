@@ -14,6 +14,7 @@ import com.sumanthbayya.entities.Master_Location;
 import com.sumanthbayya.repositories.DepartmentDAO;
 import com.sumanthbayya.repositories.LocationDAO;
 import com.sumanthbayya.vo.DepartmentVo;
+import com.sumanthbayya.vo.LocationVo;
 
 @Service
 public class DepartmentService {
@@ -66,9 +67,6 @@ public class DepartmentService {
 		 departmentDAO.deleteDepatmentObjectManual(Long.valueOf(department_id));
 	}
 	
-	public void addDepartments(String department_id) {
-		 departmentDAO.deleteDepatmentObjectManual(Long.valueOf(department_id));
-	}
 	
 	
 	public Master_Location getLocationObjectById(String location_id){
@@ -79,6 +77,38 @@ public class DepartmentService {
 		sendingMloc.setMasterLocationDesc(mloc.get().getMasterLocationDesc());
 		sendingMloc.setMasterActiveFlag(mloc.get().getMasterActiveFlag());
 		return sendingMloc;
+	}
+	
+	public Master_Location getLocationObjectByName(String location_name){
+		Master_Location sendingMloc = locationDAO.findByMasterLocationName(location_name);
+		return sendingMloc;
+	}
+	public String updateDepartments(List<DepartmentVo> departmentList) {
+		LOG.info("updated departments data of count: "+departmentList.size());
+		for (DepartmentVo departmentVo : departmentList) {
+			Master_Department masterLocObj = new Master_Department();
+				masterLocObj.setMasterDepartmentId(departmentVo.getId());
+				masterLocObj.setMasterDepartmentName(departmentVo.getDepartmentName());
+				masterLocObj.setMasterDepartmentDesc(departmentVo.getDepartmentDesc());
+				masterLocObj.setMasterDepActiveFlag(departmentVo.getActiveFlag());
+				masterLocObj.setLocation(getLocationObjectByName(departmentVo.getLocationName()));
+				departmentDAO.save(masterLocObj);
+		}
+		return "updated locations";
+		
+	}
+	
+	public String addDepartments(List<DepartmentVo> departmentList) {
+		LOG.info("saveddepartments data of count: "+departmentList.size());
+		for (DepartmentVo departmentVo : departmentList) {
+			Master_Department masterLocObj = new Master_Department();
+				masterLocObj.setMasterDepartmentName(departmentVo.getDepartmentName());
+				masterLocObj.setMasterDepartmentDesc(departmentVo.getDepartmentDesc());
+				masterLocObj.setMasterDepActiveFlag(departmentVo.getActiveFlag());
+				masterLocObj.setLocation(getLocationObjectByName(departmentVo.getLocationName()));
+				departmentDAO.save(masterLocObj);
+		}
+		return "saved locations";
 	}
 	
 }

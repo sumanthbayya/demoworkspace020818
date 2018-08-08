@@ -1,0 +1,99 @@
+package com.sumanthbayya.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sumanthbayya.entities.Master_Department;
+import com.sumanthbayya.entities.Master_Location;
+import com.sumanthbayya.repositories.DepartmentDAO;
+import com.sumanthbayya.repositories.LocationDAO;
+import com.sumanthbayya.vo.DepartmentVo;
+import com.sumanthbayya.vo.LocationVo;
+
+@Service
+public class DepartmentService {
+	private static final Logger LOG = LoggerFactory.getLogger(DepartmentService.class);
+	
+	@Autowired
+	DepartmentDAO departmentDAO;
+	
+	@Autowired
+	LocationDAO locationDAO;
+
+	public List<DepartmentVo> getDepartmentByLocation(String location_id, String department_id) {
+		LOG.info("Getting locations wise departments");
+		List<Master_Department> depDBData = departmentDAO.findByMasterDepartmentIdAndLocation(Long.valueOf(department_id),getLocationObjectById(location_id));
+		List<DepartmentVo> uiDepVo  = new ArrayList<>();
+		for (Master_Department master_Department : depDBData) {
+			DepartmentVo dvo = new DepartmentVo();
+			dvo.setLocationID(master_Department.getLocation().getMasterLocationId());
+			dvo.setLocationName(master_Department.getLocation().getMasterLocationName());
+			dvo.setId(master_Department.getMasterDepartmentId());
+			dvo.setDepartmentName(master_Department.getMasterDepartmentName());
+			dvo.setDepartmentDesc(master_Department.getMasterDepartmentDesc());
+			dvo.setActiveFlag(master_Department.getMasterDepActiveFlag());
+			uiDepVo.add(dvo);
+		}
+		
+		return uiDepVo;
+	}
+	public List<DepartmentVo> getDepartments() {
+		LOG.info("Getting all departments");
+		Iterable<Master_Department> depDBData = departmentDAO.findAll();
+		List<DepartmentVo> uiDepVo  = new ArrayList<>();
+		for (Master_Department master_Department  : depDBData) {
+			DepartmentVo dvo = new DepartmentVo();
+			dvo.setLocationID(master_Department.getLocation().getMasterLocationId());
+			dvo.setLocationName(master_Department.getLocation().getMasterLocationName());
+			dvo.setId(master_Department.getMasterDepartmentId());
+			dvo.setDepartmentName(master_Department.getMasterDepartmentName());
+			dvo.setDepartmentDesc(master_Department.getMasterDepartmentDesc());
+			dvo.setActiveFlag(master_Department.getMasterDepActiveFlag());
+			uiDepVo.add(dvo);
+		}
+		
+		
+		return uiDepVo;
+	}
+	
+	
+	public void deleteDepartmentByLocation(String department_id) {
+		 departmentDAO.deleteDepatmentObjectManual(Long.valueOf(department_id));
+	}
+	
+	public void addDepartments(String department_id) {
+		 departmentDAO.deleteDepatmentObjectManual(Long.valueOf(department_id));
+	}
+	
+	
+	public Master_Location getLocationObjectById(String location_id){
+		Optional<Master_Location> mloc = locationDAO.findById(Long.valueOf(location_id));
+		Master_Location sendingMloc  = new Master_Location();
+		sendingMloc.setMasterLocationId(mloc.get().getMasterLocationId());
+		sendingMloc.setMasterLocationName(mloc.get().getMasterLocationName());
+		sendingMloc.setMasterLocationDesc(mloc.get().getMasterLocationDesc());
+		sendingMloc.setMasterActiveFlag(mloc.get().getMasterActiveFlag());
+		return sendingMloc;
+	}
+	public String updateDepartment(List<DepartmentVo> departmentList) {
+		LOG.info("updated locations data of count: "+locationObjects.size());
+		for (LocationVo locationVo : locationObjects) {
+			Master_Location masterLocObj = new Master_Location();
+				masterLocObj.setMasterLocationId(locationVo.getId());
+				masterLocObj.setMasterLocationName(locationVo.getLocationName());
+				masterLocObj.setMasterLocationDesc(locationVo.getLocationDesc());
+				masterLocObj.setMasterActiveFlag(locationVo.getActive());
+				locationDAO.save(masterLocObj);
+		}
+		return "updated locations";
+		
+		return null;
+	}
+	
+}

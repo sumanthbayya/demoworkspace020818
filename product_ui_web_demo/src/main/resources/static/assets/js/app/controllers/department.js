@@ -107,9 +107,10 @@ productApp.controller("departmentController",["$scope","locationService","depart
      	
      	$scope.addcollection.push({
      		'id':$scope.addcollection.length+1,
-     		locationName : null,
-     		locationDesc : null,
-     		active :null,
+     		departmentName : null,
+     		departmentDesc : null,
+     		locationName:null,
+     		activeFlag :null,
      		isSelected:true
 				
      });   
@@ -136,14 +137,14 @@ productApp.controller("departmentController",["$scope","locationService","depart
     	   });
     	   
     	   console.log($scope.tempSaveArray);
-//    	   locationService.postLocations($scope.tempSaveArray).then(
-//		  			function(data){
-//		  				
-//		  			},
-//		  			function()
-//						{
-//						}
-//		  			); 
+    	   departmentService.postDepartments($scope.tempSaveArray).then(
+		  			function(data){
+		  				
+		  			},
+		  			function()
+						{
+						}
+		  			); 
     	   
     	   $timeout(function () {
     		   $route.reload();
@@ -165,13 +166,14 @@ productApp.controller("departmentController",["$scope","locationService","depart
 	    	   });
 	    	   
 	    	   console.log($scope.tempSaveArrayNew);
-//	    	   locationService.updateLocations($scope.tempSaveArrayNew).then(
-//			  			function(data){
-//			  			},
-//			  			function()
-//							{
-//							}
-//			  			); 
+	    	   departmentService.updateDepartments($scope.tempSaveArrayNew).then(
+			  			function(data){
+			  				alert("Came");
+			  			},
+			  			function()
+							{
+							}
+			  			); 
 	    	   
 	    	   $timeout(function () {
 	    		   $route.reload();
@@ -183,13 +185,13 @@ productApp.controller("departmentController",["$scope","locationService","depart
 		    	   angular.forEach(collection,function(values){
 		    		  if(values.isSelected == true){
 		    			  
-//		    			  locationService.deleteLocation(values.id).then(
-//						  			function(data){
-//						  			},
-//						  			function()
-//										{
-//										}
-//						  			); 
+		    			  departmentService.deleteDepartments(values.id).then(
+						  			function(data){
+						  			},
+						  			function()
+										{
+										}
+						  			); 
 		    			  
 		    		  }
 		    		  
