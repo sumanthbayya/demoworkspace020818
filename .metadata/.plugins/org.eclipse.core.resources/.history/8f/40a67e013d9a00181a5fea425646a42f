@@ -1,0 +1,51 @@
+/**
+ * 
+ */
+
+productApp.controller("locaationController",["$scope","locationService",function($scope,locationService) {
+
+	$scope.init = function(){
+		
+		locationService.getAllLocations().then(
+	  			function(data){
+						 $scope.collection=data;
+				    	  $scope.locationData = [].concat($scope.collection);
+				    	  $scope.rowCollection= $scope.locationData;
+				    	  $scope.$digest();
+	  			},
+	  			function()
+					{
+						alert('error no data found');
+					}
+	  			); 
+		
+	}
+	
+	$scope.selectAll = function(selectedData){
+	}
+	
+	
+	
+}]);
+
+
+productApp.service("locationService",['$http',function($http){
+	
+	this.getAllLocations = function() { 
+		return new Promise(function(resolve,reject){
+			
+			$http.get('http://localhost:9010/api/v1/location').then(
+				function(response){
+					resolve(response.data);
+					
+				},
+				function(error){
+					console.log("No data found / Connection error");
+					reject([]);
+				});
+		});
+		}
+
+	
+
+}]);

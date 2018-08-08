@@ -1,0 +1,10 @@
+package com.sumanthbayya.vo;
+
+public class DepartmentVo {
+	private Long departmentId;
+	private String departmentName;
+	private String departmentDesc;
+	private String activeFlag;
+	private Long locationID;
+	private String locationName;
+}

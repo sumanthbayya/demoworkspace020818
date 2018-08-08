@@ -1,0 +1,107 @@
+package com.sumanthbayya.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sumanthbayya.entities.Master_Location;
+import com.sumanthbayya.repositories.LocationDAO;
+import com.sumanthbayya.vo.LocationVo;
+
+@Service
+public class LocationService {
+
+	private static final Logger LOG = LoggerFactory.getLogger(LocationService.class);
+	
+	@Autowired
+	LocationDAO locationDAO;
+	
+	
+	public List<LocationVo> getLocations() {
+		LOG.info("fetching all locations data.");
+		Iterable<Master_Location> locationList = locationDAO.findAll();
+		List<LocationVo> locationVOList = new ArrayList<LocationVo>();
+		for (Master_Location locObj : locationList) {
+			LocationVo voObj = new LocationVo();
+			voObj.setId(locObj.getMasterLocationId());
+			voObj.setLocationName(locObj.getMasterLocationName());
+			voObj.setLocationDesc(locObj.getMasterLocationDesc());
+			voObj.setActive(locObj.getMasterActiveFlag());
+			locationVOList.add(voObj);
+		}
+		return locationVOList;
+	}
+	
+	public LocationVo getLocationById(Long id){
+		LOG.info("fetching location data with id"+id); 
+		Optional<Master_Location> masterLoc=locationDAO.findById(id);
+		LocationVo getLocVo = new LocationVo();
+		getLocVo.setId(masterLoc.get().getMasterLocationId());
+		getLocVo.setLocationName(masterLoc.get().getMasterLocationName());
+		getLocVo.setLocationDesc(masterLoc.get().getMasterLocationDesc());
+		getLocVo.setActive(masterLoc.get().getMasterActiveFlag());
+		return getLocVo;
+	}
+	
+	public String addLocations(List<LocationVo> locationObjects){
+		LOG.info("adding new locations data of count: "+locationObjects.size());
+		for (LocationVo locationVo : locationObjects) {
+			Master_Location masterLocObj = new Master_Location();
+			List<LocationVo> locationVOList = getLocations();
+			for (LocationVo locationVo2 : locationVOList) {
+				int a=0;
+				if(locationVo2.getId() == locationVo.getId()){
+					
+				}
+				else{
+				}
+			}
+			
+			masterLocObj.setMasterLocationId(locationVo.getId());
+			masterLocObj.setMasterLocationName(locationVo.getLocationName());
+			masterLocObj.setMasterLocationDesc(locationVo.getLocationDesc());
+			masterLocObj.setMasterActiveFlag(locationVo.getActive());
+			locationDAO.save(masterLocObj);
+			
+			
+			
+		}
+		return "added new locations";
+		
+	}
+	
+	public String deleteLocation(Long id){
+		LOG.info("Deleting location with id : "+id);
+		locationDAO.deleteById(id);
+		LOG.info("Deleted location with id : "+id);
+		return "deleted location";
+		
+	}
+	
+	public String deleteAllLocation(List<LocationVo> removeLocList){
+		LOG.info("Deleting locations of size : "+removeLocList.size());
+		for (LocationVo locationVo : removeLocList) {
+			locationDAO.deleteById(locationVo.getId());
+		}
+		LOG.info("Deleted location with id : "+removeLocList.size());
+		return "deleted location";
+		
+	}
+	
+	public String updateLocation(Long locid,String locationName,String locationDescription,String activeFlag){
+		LOG.info("Updating : "+locationName);
+		Optional<Master_Location> masterLocToUpdate = locationDAO.findById(locid);
+		Master_Location updateObject = masterLocToUpdate.get();
+		updateObject.setMasterLocationName(locationName);
+		updateObject.setMasterLocationDesc(locationDescription);
+		updateObject.setMasterActiveFlag(activeFlag);
+		locationDAO.save(updateObject);
+		return "location updated";
+	}
+	
+}

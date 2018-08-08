@@ -1,0 +1,11 @@
+/**
+ * @author manikanta.nsk
+ */
+
+productApp.controller("departmentController",["$scope","locationService","$route","$timeout",function($scope,locationService,$route,$timeout) {
+	
+	$scope.init = function(){
+		
+	}
+	
+}]);

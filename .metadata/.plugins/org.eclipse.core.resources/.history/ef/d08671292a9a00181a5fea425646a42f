@@ -1,0 +1,20 @@
+package com.sumanthbayya.controllers;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sumanthbayya.vo.LocationVo;
+
+@RestController
+@RequestMapping(value="/location")
+public class LocationController {
+
+	@RequestMapping("/allLocations")
+	public List<LocationVo> getAllLocations() {
+		return locService.getLocations();;
+	}
+	
+	
+}

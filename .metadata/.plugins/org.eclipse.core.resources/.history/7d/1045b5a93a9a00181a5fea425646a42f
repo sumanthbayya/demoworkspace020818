@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+
+productApp.controller("locaationController",["$scope","$route",function($scope,$route) {
+
+	$scope.init = function(){
+		
+		
+		
+	}
+	
+}]);

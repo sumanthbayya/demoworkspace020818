@@ -1,0 +1,87 @@
+package com.sumanthbayya.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Master_SubCategory")
+public class Master_SubCategory implements Serializable{
+	
+private static final long serialVersionUID = 1L;
+	
+	
+	public Master_SubCategory() {
+	
+	}
+
+	@Id
+	@Column(name="[Master_SubCategory_ID]")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long sku004SubCategoryId;
+	
+	@Column(name="[Master_SubCategory_NAME]")
+	private String sku004SubCategoryName;
+	
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="SKU003_CATEGORY_ID")
+	private Master_Category category;
+	
+	@Column(name="SKU004_ACTV_F")
+	private String sku004ActiveFlag;
+	
+	@Column(name="[Master_SubCategory_DESC]")
+	private String sku004SubCategoryDesc;
+
+
+	public Long getSku004SubCategoryId() {
+		return sku004SubCategoryId;
+	}
+
+	public void setSku004SubCategoryId(Long sku004SubCategoryId) {
+		this.sku004SubCategoryId = sku004SubCategoryId;
+	}
+
+	public String getSku004SubCategoryName() {
+		return sku004SubCategoryName;
+	}
+
+	public void setSku004SubCategoryName(String sku004SubCategoryName) {
+		this.sku004SubCategoryName = sku004SubCategoryName;
+	}
+
+	public Master_Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Master_Category category) {
+		this.category = category;
+	}
+
+	public String getSku004ActiveFlag() {
+		return sku004ActiveFlag;
+	}
+
+	public void setSku004ActiveFlag(String sku004ActiveFlag) {
+		this.sku004ActiveFlag = sku004ActiveFlag;
+	}
+
+	public String getSku004SubCategoryDesc() {
+		return sku004SubCategoryDesc;
+	}
+
+	public void setSku004SubCategoryDesc(String sku004SubCategoryDesc) {
+		this.sku004SubCategoryDesc = sku004SubCategoryDesc;
+	}
+	
+	
+}

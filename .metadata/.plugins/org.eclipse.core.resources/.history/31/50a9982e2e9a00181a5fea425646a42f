@@ -1,0 +1,53 @@
+package com.sumanthbayya.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sumanthbayya.entities.Master_Location;
+import com.sumanthbayya.repositories.LocationDAO;
+import com.sumanthbayya.vo.LocationVo;
+
+@Service
+public class LocationService {
+
+	private static final Logger LOG = LoggerFactory.getLogger(LocationService.class);
+	
+	@Autowired
+	LocationDAO locationDAO;
+	
+	
+	public List<LocationVo> getLocations() {
+		LOG.info("fetching all locations data.");
+		Iterable<Master_Location> locationList = locationDAO.findAll();
+		List<LocationVo> locationVOList = new ArrayList<LocationVo>();
+		for (Master_Location locObj : locationList) {
+			LocationVo voObj = new LocationVo();
+			voObj.setLocationId(locObj.getMasterLocationId());
+			voObj.setLocationName(locObj.getMasterLocationName());
+			voObj.setLocationDesc(locObj.getMasterLocationDesc());
+			voObj.setActive(locObj.getMasterActiveFlag());
+			locationVOList.add(voObj);
+		}
+		return locationVOList;
+	}
+	
+	public Optional<Master_Location> getLocationById(Long id){
+		LOG.info("fetching location data with id"+id);
+		return locationDAO.findById(id);
+	}
+	
+	public String addLocation(List<Master_Location> master_locationObjects){
+		LOG.info("adding new locations data of count:");
+		locationDAO.saveAll(master_locationObjects);
+		return "added new locations";
+		
+	}
+	
+	
+}

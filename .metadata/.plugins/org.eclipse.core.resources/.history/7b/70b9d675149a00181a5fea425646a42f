@@ -1,0 +1,113 @@
+package com.sumanthbayya.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="SKU005_SKUTXN")
+public class SkuTransaction_SKU005 implements Serializable{
+	
+private static final long serialVersionUID = 1L;
+	
+	
+	public SkuTransaction_SKU005() {
+	
+	}
+
+	@Id
+	@Column(name="SKU005_SKUTXN_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long sku005SkuTransactionId;
+	
+	@Column(name="SKU004_SKUTXN_NAME")
+	private String sku005SkuTransactionName;
+	
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="SKU003_CATEGORY_ID")
+	private Master_Category category;
+	
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="SKU002_DEPARTMENT_ID")
+	private Master_Department department;
+	
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="SKU001_LOCATION_ID")
+	private Master_Location location;
+	
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="SKU004_SUBCATEGORY_ID")
+	private SubCategory_SKU004 subCategory;
+	
+	@Column(name="SKU005_ACTV_F")
+	private String sku005ActiveFlag;
+
+
+	public Long getSku005SkuTransactionId() {
+		return sku005SkuTransactionId;
+	}
+
+	public void setSku005SkuTransactionId(Long sku005SkuTransactionId) {
+		this.sku005SkuTransactionId = sku005SkuTransactionId;
+	}
+
+	public String getSku005SkuTransactionName() {
+		return sku005SkuTransactionName;
+	}
+
+	public void setSku005SkuTransactionName(String sku005SkuTransactionName) {
+		this.sku005SkuTransactionName = sku005SkuTransactionName;
+	}
+
+	public Master_Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Master_Category category) {
+		this.category = category;
+	}
+
+	public Master_Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Master_Department department) {
+		this.department = department;
+	}
+
+	public Master_Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Master_Location location) {
+		this.location = location;
+	}
+
+	public SubCategory_SKU004 getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(SubCategory_SKU004 subCategory) {
+		this.subCategory = subCategory;
+	}
+
+	public String getSku005ActiveFlag() {
+		return sku005ActiveFlag;
+	}
+
+	public void setSku005ActiveFlag(String sku005ActiveFlag) {
+		this.sku005ActiveFlag = sku005ActiveFlag;
+	}
+	
+	
+
+}

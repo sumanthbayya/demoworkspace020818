@@ -1,0 +1,22 @@
+/**
+ * @author manikanta.nsk
+ */
+
+productApp.controller("departmentController",["$scope","locationService","$route","$timeout",function($scope,locationService,$route,$timeout) {
+	
+	$scope.init = function(){
+		locationService.getAllLocations().then(
+	  			function(data){
+						 $scope.collection=data;
+				    	  $scope.locationData = [].concat($scope.collection);
+				    	  $scope.rowCollection= data;
+				    	  $scope.$digest();
+	  			},
+	  			function()
+					{
+						alert('error no data found');
+					}
+	  			);
+	}
+	
+}]);

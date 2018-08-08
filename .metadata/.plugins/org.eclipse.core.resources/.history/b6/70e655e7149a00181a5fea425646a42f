@@ -1,0 +1,50 @@
+package com.sumanthbayya.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Master_SubCategory")
+public class Master_SubCategory implements Serializable{
+	
+private static final long serialVersionUID = 1L;
+	
+	
+	public Master_SubCategory() {
+	
+	}
+
+	@Id
+	@Column(name="[Master_SubCategory_ID]")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long masterSubCategoryId;
+	
+	@Column(name="[Master_SubCategory_NAME]")
+	private String masterSubCategoryName;
+	
+	@Column(name="[Master_SubCategory_DESC]")
+	private String masterSubCategoryDesc;
+	
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="[Master_Category_ID]")
+	private Master_Category category;
+	
+	@Column(name="[Master_ACTV_F]")
+	private String sku004ActiveFlag;
+	
+	
+
+
+	
+	
+}

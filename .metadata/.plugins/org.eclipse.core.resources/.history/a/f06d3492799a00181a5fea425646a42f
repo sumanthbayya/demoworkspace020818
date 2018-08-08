@@ -1,0 +1,25 @@
+/**
+ * @author manikanta.nsk
+ */
+
+productApp.controller("departmentController",["$scope","locationService","$route","$timeout",function($scope,locationService,$route,$timeout) {
+	
+	$scope.init = function(){
+		locationService.getAllLocations().then(
+	  			function(data){
+						 $scope.locationDrop=data;
+						 $scope.$watch('locationDrop',function(){
+							 angular.forEach($scope.locationDrop,function(values){
+								$scope.locationDropDown.push({key: values.locationId,value : values.locationName}); 
+							 });
+						 });
+				    	 
+	  			},
+	  			function()
+					{
+						alert('error no data found');
+					}
+	  			);
+	}
+	
+}]);

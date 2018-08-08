@@ -1,0 +1,49 @@
+package com.sumanthbayya.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Master_Department")
+public class Master_Department implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	
+	public Master_Department() {
+	
+	}
+
+	@Id
+	@Column(name="Master_Department_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long sku002DepartmentId;
+	
+	@Column(name="Master_Department_NAME")
+	private String sku002DepartmentName;
+	
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name="Master_Location_ID")
+	private Master_Location location;
+	
+	@Column(name="Master_ACTV_F")
+	private String sku002ActiveFlag;
+	
+	@Column(name="Master_Department_DESC")
+	private String sku002DepartmentDesc;
+
+	
+	
+	
+
+}

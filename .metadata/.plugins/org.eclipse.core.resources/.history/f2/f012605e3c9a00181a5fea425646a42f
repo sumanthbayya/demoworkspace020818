@@ -1,0 +1,4 @@
+<div ng-controller="locationController" ng-init="init()">
+
+
+</div>

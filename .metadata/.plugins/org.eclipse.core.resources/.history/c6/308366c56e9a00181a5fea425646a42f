@@ -1,0 +1,5 @@
+package com.sumanthbayya.services;
+
+public class DepartmentService {
+
+}

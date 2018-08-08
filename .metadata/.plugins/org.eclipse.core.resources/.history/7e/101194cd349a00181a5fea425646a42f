@@ -1,0 +1,15 @@
+package com.sumanthbayya.vo;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class CategoryVo {
+	private Long categoryId;
+	private String categoryName;
+	private String categoryDesc;
+	private String activeFlag;
+	private Long departmentId;
+	private Long locationId;
+	private String locationName;
+	private String departmentName;
+}

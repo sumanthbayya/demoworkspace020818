@@ -1,0 +1,8 @@
+/**
+ * 
+ */
+
+productApp.controller("uxController",["$scope","$route",function($scope,$route) {
+	
+	
+}

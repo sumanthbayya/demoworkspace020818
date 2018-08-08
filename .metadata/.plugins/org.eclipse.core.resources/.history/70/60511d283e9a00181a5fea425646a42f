@@ -1,0 +1,34 @@
+package com.sumanthbayya.vo;
+
+public class LocationVo {
+	private Long   locationId;
+	private String locationName;
+	private String locationDesc;
+	private String active;
+	
+	public Long getLocationId() {
+		return locationId;
+	}
+	public void setLocationId(Long locationId) {
+		this.locationId = locationId;
+	}
+	public String getLocationName() {
+		return locationName;
+	}
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+	public String getLocationDesc() {
+		return locationDesc;
+	}
+	public void setLocationDesc(String locationDesc) {
+		this.locationDesc = locationDesc;
+	}
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
+	
+}

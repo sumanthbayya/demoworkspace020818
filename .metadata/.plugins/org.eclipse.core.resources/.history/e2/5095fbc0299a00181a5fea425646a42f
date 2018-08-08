@@ -1,0 +1,5 @@
+package com.sumanthbayya.repositories;
+
+public class SubCategoryDAO {
+
+}

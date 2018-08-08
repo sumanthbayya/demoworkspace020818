@@ -1,0 +1,5 @@
+package com.sumanthbayya.vo;
+
+public class LocationVo {
+
+}

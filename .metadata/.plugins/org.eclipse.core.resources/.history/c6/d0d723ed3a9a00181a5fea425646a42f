@@ -1,0 +1,38 @@
+/**
+ * 
+ */
+
+productApp.controller("locaationController",["$scope","$route",function($scope,$route) {
+
+	$scope.init = function(){
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+}]);
+
+
+productApp.service("locationService",['$http',function($http){
+	
+	this.getRequestData = function() { 
+		return new Promise(function(resolve,reject){
+			
+			$http.post('http://localhost:9060/EsipService/User/RequestUserSearch').then(
+				function(response){
+					resolve(response.data);
+				},
+				function(error){
+					console.log("Inside Request User Search",+data);
+					reject([]);
+				});
+		});
+		}
+
+	
+
+}]);

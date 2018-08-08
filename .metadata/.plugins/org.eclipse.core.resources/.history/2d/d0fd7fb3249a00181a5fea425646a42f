@@ -1,0 +1,17 @@
+package com.sumanthbayya.controllers;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+@RestController
+@RequestMapping("/v1")
+public class MasterAPIController {
+	private static final Logger LOG = LoggerFactory.getLogger(MasterAPIController.class);
+	@RequestMapping(value = "/sample")
+	 String getProduces(){
+		LOG.warn("sending hello world response...");
+	    return "Produces attribute";
+	  }
+
+}

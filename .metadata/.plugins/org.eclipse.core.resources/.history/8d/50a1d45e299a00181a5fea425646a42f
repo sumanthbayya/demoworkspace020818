@@ -1,0 +1,27 @@
+package com.sumanthbayya.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Service
+public class LocationService {
+
+	@Autowired
+	Location001DAO location001DAO;
+	
+	
+	public List<LocationVo> getAllLocations() {
+
+		Iterable<Location_SKU001> locationList = location001DAO.findAll();
+		List<LocationVo> locVoList = new ArrayList<LocationVo>();
+		for (Location_SKU001 locObj : locationList) {
+			LocationVo voObj = new LocationVo();
+			voObj.setLocationId(locObj.getSku001LocationId());
+			voObj.setLocationName(locObj.getSku001LocationName());
+			voObj.setLocationDesc(locObj.getSku001LocationDesc());
+			voObj.setActiveFlag(locObj.getSku001ActiveFlag());
+			voObj.setEditable(false);
+			locVoList.add(voObj);
+		}
+		return locVoList;
+	}
+}

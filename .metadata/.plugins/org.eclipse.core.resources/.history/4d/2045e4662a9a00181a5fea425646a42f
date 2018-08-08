@@ -1,0 +1,34 @@
+package com.sumanthbayya.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sumanthbayya.entities.Master_Location;
+import com.sumanthbayya.repositories.LocationDAO;
+import com.sumanthbayya.vo.LocationVo;
+
+@Service
+public class LocationService {
+
+	@Autowired
+	LocationDAO locationDAO;
+	
+	
+	public List<LocationVo> getLocations() {
+
+		Iterable<Master_Location> locationList = locationDAO.findAll();
+		List<LocationVo> locVoList = new ArrayList<LocationVo>();
+		for (Master_Location locObj : locationList) {
+			LocationVo voObj = new LocationVo();
+			voObj.setLocationId(locObj.getMasterLocationId());
+			voObj.setLocationName(locObj.getMasterLocationName());
+			voObj.setLocationDesc(locObj.getMasterLocationDesc());
+			voObj.setActive(locObj.getMasterActiveFlag());
+			locVoList.add(voObj);
+		}
+		return locVoList;
+	}
+}

@@ -1,0 +1,8 @@
+package com.sumanthbayya.repositories;
+
+
+@Transactional
+@Repository
+public class LocationDAO extends CrudRepository<Master_Location, Long>{{
+
+}

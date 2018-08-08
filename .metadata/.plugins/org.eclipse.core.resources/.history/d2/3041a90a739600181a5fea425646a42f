@@ -1,0 +1,128 @@
+<div ng-class="{on:onOff}" class="highlight">
+  Highlight this box
+</div>
+<button ng-click="onOff=!onOff">Toggle</button>
+
+<style>
+.highlight {
+  transition:0.5s linear all;
+}
+.highlight.on-add {
+  background:white;
+}
+.highlight.on {
+  background:yellow;
+}
+.highlight.on-remove {
+  background:black;
+}
+</style>
+
+<div class="container drop-shadow margin">
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" >
+<h3 class="headingMain">External Contacts</h3>
+<h5>Select the client contacts associated with this offer</h5>
+</div>
+
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align: right;" ng-click="hideDatatable()" ng-show="collapseFlag">
+<span class="icon far fa-minus-square">&nbsp;Collapse</span>
+</div>
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align: right;" ng-click="showDatatable()" ng-show="!collapseFlag">
+<span class="icon far fa-plus-square">&nbsp;Open</span>
+</div>
+
+
+</div>
+
+
+<div  class="container drop-shadow margin" ng-init="init()" ng-show="collapseFlag">
+	<div class="table-responsive">
+
+		<div class="table-responsive">
+			<table st-set-filter="customFilter" st-table="contactData"
+				st-safe-src="rowCollection"
+				class="table table-bordered table-striped">
+
+				<thead>
+					<tr>
+					<th row-select-all="rowCollection" selected="selected" ng-click="selectAll(rowCollection)"></th>
+					<th st-sort="id" scope="col">Line</th>
+						<th st-sort="type" scope="col">Type</th>
+						<th st-sort="name" scope="col">Name</th>
+						<th st-sort="title" scope="col">Title</th>
+						<th st-sort="phone" scope="col">Phone</th>
+						<th st-sort="ext" scope="col">Ext</th>
+						<th st-sort="fax" scope="col">Fax</th>
+						<th st-sort="email" scope="col">Email</th>
+						
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in contactData track by $index">
+					
+					
+					
+					
+						<td row-select="row" ng-click="select(row.id)" selectdt="row.selected"></td>
+						<td >{{row.id}}</td>
+						<td ng-if="!dataadd && !row.selected">{{row.type}}</td>
+								<td ng-if="dataadd || row.selected"><input
+							type="text" class="form-control" ng-model="row.type"/></td>
+							<td
+							ng-if="!dataadd && !row.selected">{{row.name}}</td>
+						<td ng-if="dataadd || row.selected"><input
+							type="text" class="form-control" ng-model="row.name"/></td>
+							<td
+							ng-if="!dataadd && !row.selected">{{row.title}}</td>
+						<td ng-if="dataadd || row.selected"><input
+							type="text" class="form-control" ng-model="row.title"/></td>
+							<td
+							ng-if="!dataadd && !row.selected">{{row.phone}}</td>
+						<td ng-if="dataadd || row.selected"><input
+							type="text" class="form-control" ng-model="row.phone"/></td>
+							<td
+							ng-if="!dataadd && !row.selected">{{row.ext}}</td>
+						<td ng-if="dataadd || row.selected"><input
+							type="text" class="form-control" ng-model="row.ext"/></td>
+							<td
+							ng-if="!dataadd && !row.selected">{{row.fax}}</td>
+						<td ng-if="dataadd || row.selected"><input
+							type="text" class="form-control" ng-model="row.fax"/></td>
+							<td
+							ng-if="!dataadd && !row.selected">{{row.email}}</td>
+						<td ng-if="dataadd || row.selected"><input
+							type="text" class="form-control" ng-model="row.email"/></td>
+					</tr>
+				</tbody>
+				<tfoot>
+							<tr>
+
+								<td colspan="12">
+									<div class="" st-items-by-page="4" st-pagination=""
+										st-template="views/pagination.custom.html"></div>
+									<div class="paginationNew"><span>Total Records : {{ rowCollection.length }}</span> </div> 
+								</td>
+
+							</tr>
+						</tfoot>
+				
+			</table>
+		</div>
+	</div>
+	 <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 buttonGroup">
+<button type="button" class="btn glass" ng-click="processAddRow()">
+		<span class="icon far fa-plus"></span> Add
+		</button>
+		<button type="button" class="btn glass" ng-click="processSave(rowCollection)">
+		<span class="icon far fa-save"></span> Save
+		</button>
+		<button type="button" class="btn glass" ng-click="refresh()">
+		<span class="icon far fa-undo"></span> Refresh
+		</button>
+</div>
+</div>
+</div>
+
+
