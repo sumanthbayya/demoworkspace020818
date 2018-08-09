@@ -7,14 +7,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 ## For Jars:
-1.Java 1.8
+* Java 1.8
 
 ## For Code to Run and up in localhost
-1.Eclipse IDE
-2.Gradle
-3.STS
-4.Java 1.8
-5.Web Browser(haha i know this will be there but yeah ! just saying)
+* Eclipse IDE
+* Gradle
+* Java 1.8
+* Web Browser(haha i know this will be there but yeah ! just saying)
 
 ### API End point URL's
 1.http://localhost:9010//api/v1/location,
