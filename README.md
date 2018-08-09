@@ -28,11 +28,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Built With
 * Bootstrap 3.3.7,SASS - Styling
-* Angular Js - Web Framework
+* Angular Js - Web Framework <3
 * Spring Boot - Rest ful services
-* Java
+* Java <3
 * Spring Data JPA
 * Gradle(mavenCentral()) - Dependency Management
+* Log4j - Logging framework
 
 
 
