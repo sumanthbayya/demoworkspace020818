@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sumanthbayya.entities.Master_Category;
 import com.sumanthbayya.entities.Master_Department;
-import com.sumanthbayya.entities.Master_Location;
 
 @Transactional
 @Repository

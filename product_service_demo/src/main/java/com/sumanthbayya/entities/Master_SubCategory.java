@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Master_SubCategory")
+@Table(name="Master_sub")
 public class Master_SubCategory implements Serializable{
 	
 private static final long serialVersionUID = 1L;
@@ -25,21 +25,21 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@Id
-	@Column(name="Master_SubCategory_ID")
+	@Column(name="Master_sub_ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long masterSubCategoryId;
 	
-	@Column(name="Master_SubCategory_NAME")
+	@Column(name="Master_sub_NAME")
 	private String masterSubCategoryName;
 	
-	@Column(name="Master_SubCategory_DESC")
+	@Column(name="Master_sub_DESC")
 	private String masterSubCategoryDesc;
 	
 	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="Master_Category_ID")
 	private Master_Category category;
 	
-	@Column(name="Master_ACTV_F")
+	@Column(name="Master_sub_ACTV_F")
 	private String masterSubCatActiveFlag;
 
 

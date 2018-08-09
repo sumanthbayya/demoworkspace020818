@@ -15,7 +15,6 @@ import com.sumanthbayya.repositories.CategoryDAO;
 import com.sumanthbayya.repositories.DepartmentDAO;
 import com.sumanthbayya.repositories.LocationDAO;
 import com.sumanthbayya.repositories.SubCategoryDAO;
-
 import com.sumanthbayya.vo.SubCategoryVo;
 
 @Service
@@ -45,9 +44,9 @@ public class SubCategoryService {
 			List<Master_SubCategory> subcatDBData = new ArrayList<>();
 			List<Master_Department> depsByLocationList = commonService.getDepartmentsByLocationId(Long.valueOf(location_id));
 			for (Master_Department master_Department : depsByLocationList) {
-//				categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department);
+				categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department);
 				for (Master_Category master_category : categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department)) {
-					//commonService.getCategoryByObjectId(master_category.getMasterCategoryId())
+					// commonService.getCategoryByObjectId(master_category.getMasterCategoryId())
 					for (Master_SubCategory master_SubCategory : subCategoryDao.findByMasterSubCategoryIdAndCategory(Long.valueOf(subcategory_id),master_category)) {
 						subcatDBData.add(master_SubCategory);
 					}
@@ -76,7 +75,7 @@ public class SubCategoryService {
 	}
 
 	public void deleteSubCategoryByCategoryAndDepartmentAndLocation(String subcategory_id) {
-		// TODO Auto-generated method stub
+		subCategoryDao.deleteById(Long.valueOf(subcategory_id));
 		
 	}
 }

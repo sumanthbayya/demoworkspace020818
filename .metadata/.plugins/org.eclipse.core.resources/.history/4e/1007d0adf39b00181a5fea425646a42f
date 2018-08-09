@@ -1,0 +1,14 @@
+server.servlet.context-path=/api
+server.port=9010
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.datasource.url=jdbc:sqlserver://den1.mssql3.gear.host:1433;databaseName=testdatabase07
+spring.datasource.username=testdatabase07
+spring.datasource.password=test@123
+spring.datasource.tomcat.max-wait=20000
+spring.datasource.tomcat.max-active=40
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServer2012Dialect
+spring.jpa.properties.hibernate.id.new_generator_mappings=false
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.show_sql=true
+spring.jpa.properties.hibernate.use_sql_comments=true
+spring.jpa.hibernate.ddl-auto=none

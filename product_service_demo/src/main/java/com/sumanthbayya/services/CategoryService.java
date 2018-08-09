@@ -41,7 +41,7 @@ public class CategoryService {
 		List<Master_Category> catDBData = new ArrayList<>();
 		List<Master_Department> depsByLocationList = commonService.getDepartmentsByLocationId(Long.valueOf(location_id));
 		for (Master_Department master_Department : depsByLocationList) {
-			categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department);
+//			categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department);
 			for (Master_Category master_category : categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department)) {
 				catDBData.add(master_category);
 			}
