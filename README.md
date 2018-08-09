@@ -33,7 +33,7 @@ These instructions will get you a copy of the project up and running on your loc
 * Spring Boot - Rest ful services
 * Java
 * Spring Data JPA
-* Maven - Dependency Management
+* Gradle(mavenCentral()) - Dependency Management
 
 
 
