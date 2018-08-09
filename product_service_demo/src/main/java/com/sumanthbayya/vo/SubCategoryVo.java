@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SubCategoryVo {
-	private Long subCategoryId;
+	private Long id;
 	private String subCateogryName;
 	private String subCategoryDesc;
 	private String activeFlag;
@@ -14,11 +14,12 @@ public class SubCategoryVo {
 	private String locationName;
 	private String departmentName;
 	private String categoryName;
-	public Long getSubCategoryId() {
-		return subCategoryId;
+	
+	public Long getId() {
+		return id;
 	}
-	public void setSubCategoryId(Long subCategoryId) {
-		this.subCategoryId = subCategoryId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getSubCateogryName() {
 		return subCateogryName;

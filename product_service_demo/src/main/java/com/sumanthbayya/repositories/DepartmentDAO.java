@@ -24,4 +24,5 @@ public interface DepartmentDAO extends CrudRepository<Master_Department, Long>{
 	
 	Master_Department findByMasterDepartmentName(String masterDepartmentName);
 
+	List<Master_Department> findByLocation(Master_Location location);
 }

@@ -37,7 +37,7 @@ private static final long serialVersionUID = 1L;
 	private Master_Department department;
 	
 	@Column(name="Master_ACTV_F")
-	private String masterDepActiveFlag;
+	private String masterCatActiveFlag;
 	
 	@Column(name="Master_Category_DESC")
 	private String masterCategoryDesc;
@@ -67,12 +67,14 @@ private static final long serialVersionUID = 1L;
 		this.department = department;
 	}
 
-	public String getMasterDepActiveFlag() {
-		return masterDepActiveFlag;
+	
+
+	public String getMasterCatActiveFlag() {
+		return masterCatActiveFlag;
 	}
 
-	public void setMasterDepActiveFlag(String masterDepActiveFlag) {
-		this.masterDepActiveFlag = masterDepActiveFlag;
+	public void setMasterCatActiveFlag(String masterCatActiveFlag) {
+		this.masterCatActiveFlag = masterCatActiveFlag;
 	}
 
 	public String getMasterCategoryDesc() {

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CategoryVo {
-	private Long categoryId;
+	private Long Id;
 	private String categoryName;
 	private String categoryDesc;
 	private String activeFlag;
@@ -13,10 +13,10 @@ public class CategoryVo {
 	private String locationName;
 	private String departmentName;
 	public Long getCategoryId() {
-		return categoryId;
+		return Id;
 	}
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoryId(Long Id) {
+		this.Id = Id;
 	}
 	public String getCategoryName() {
 		return categoryName;

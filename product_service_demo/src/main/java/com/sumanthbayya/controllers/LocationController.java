@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sumanthbayya.services.CategoryService;
+import com.sumanthbayya.services.CommonService;
 import com.sumanthbayya.services.DepartmentService;
 import com.sumanthbayya.services.LocationService;
 import com.sumanthbayya.services.SubCategoryService;
+import com.sumanthbayya.vo.CategoryVo;
 import com.sumanthbayya.vo.DepartmentVo;
 import com.sumanthbayya.vo.LocationVo;
+import com.sumanthbayya.vo.SubCategoryVo;
 
 @RestController
 @RequestMapping(value = "v1/location")
@@ -31,6 +34,9 @@ public class LocationController {
 	
 	@Autowired
 	SubCategoryService subCategoryService;
+	
+	@Autowired
+	CommonService commonService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<LocationVo> getAllLocations() {
@@ -57,9 +63,9 @@ public class LocationController {
 	public void deleteDepartment(@PathVariable String location_id,@PathVariable String department_id) {
 		departmentService.deleteDepartmentByLocation(department_id);
 	}
-	//new 
+	//new - done
 	@RequestMapping(value = "{location_id}/department/{department_id}/category/{category_id}/subcategory", method = RequestMethod.GET)
-	public List<DepartmentVo> getOneCategory(@PathVariable String location_id,@PathVariable String department_id,@PathVariable String category_id) {
+	public List<CategoryVo> getOneCategory(@PathVariable String location_id,@PathVariable String department_id,@PathVariable String category_id) {
 		return categoryService.getCategoryByDepartmentAndLocation(location_id,department_id,category_id);
 	}
 	
@@ -70,7 +76,7 @@ public class LocationController {
 	}
 	//new2
 	@RequestMapping(value = "{location_id}/department/{department_id}/category/{category_id}/subcategory/{subcategory_id}", method = RequestMethod.GET)
-	public List<DepartmentVo> getOneSubCategory(@PathVariable String location_id,@PathVariable String department_id,@PathVariable String category_id,@PathVariable String subcategory_id) {
+	public List<SubCategoryVo> getOneSubCategory(@PathVariable String location_id,@PathVariable String department_id,@PathVariable String category_id,@PathVariable String subcategory_id) {
 		return subCategoryService.getSubCategoryByCategoryAndDepartmentAndLocation(location_id,department_id,category_id,subcategory_id);
 	}
 	

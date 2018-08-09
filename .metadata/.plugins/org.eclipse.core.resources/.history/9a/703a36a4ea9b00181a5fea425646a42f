@@ -47,8 +47,8 @@ public class SubCategoryService {
 			for (Master_Department master_Department : depsByLocationList) {
 //				categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department);
 				for (Master_Category master_category : categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department)) {
-					//commonService.getCategoryByObjectId(master_category.getMasterCategoryId())
-					for (Master_SubCategory master_SubCategory : subCategoryDao.findByMasterSubCategoryIdAndCategory(Long.valueOf(subcategory_id),master_category)) {
+					
+					for (Master_SubCategory master_SubCategory : subCategoryDao.findByMasterSubCategoryIdAndCategory(Long.valueOf(subcategory_id), ) {
 						subcatDBData.add(master_SubCategory);
 					}
 				}
