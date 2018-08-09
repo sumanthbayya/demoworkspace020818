@@ -9,8 +9,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## For Jars:
 * Download For API Services: demoworkspace020818\product_service_demo\build\libs\product_service_demo-0.0.1-SNAPSHOT.jar 
-* Download For UI/UX: demoworkspace020818\product_ui_web_demo\build\libs\product_ui_web_demo-0.0.1-SNAPSHOT
+* Download For UI/UX: demoworkspace020818\product_ui_web_demo\build\libs\product_ui_web_demo-0.0.1-SNAPSHOT.jar
 * Install Java 1.8 and setup class path.
+* Now run both jars with cmd prompt by using command : 
+  For Example C:\product_workspace\demoworkspace020818\product_ui_web_demo>java -jar product_service_demo-0.0.1-SNAPSHOT.jar 
 
 ## For Code to Run and up in localhost
 * Eclipse IDE
