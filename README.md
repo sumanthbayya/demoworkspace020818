@@ -16,11 +16,11 @@ These instructions will get you a copy of the project up and running on your loc
 * Web Browser(haha i know this will be there but yeah ! just saying)
 
 ### API End point URL's
-1.http://localhost:9010//api/v1/location,
-2.http://localhost:9010//api/v1/location/{location_id}/department
-3.http://localhost:9010//api/v1/location/{location_id}/department/{department_id}/category
-4.http://localhost:9010//api/v1/location/{location_id}/department/{department_id}/category/{category_id}/subcategory
-5.http://localhost:9010//api/v1/location/{location_id}/department/{department_id}/category/{category_id}/subcategory/{subcategory_id}
+* http://localhost:9010//api/v1/location,
+* http://localhost:9010//api/v1/location/{location_id}/department
+* http://localhost:9010//api/v1/location/{location_id}/department/{department_id}/category
+* http://localhost:9010//api/v1/location/{location_id}/department/{department_id}/category/{category_id}/subcategory
+* http://localhost:9010//api/v1/location/{location_id}/department/{department_id}/category/{category_id}/subcategory/{subcategory_id}
 
 ## Deployment
 
