@@ -46,15 +46,15 @@
 						<td row-select="row" ng-click="select(row.id)" selectdt="row.selected"></td>
 				<!-- 		<td >{{row.id}}</td> -->
 						<td ng-if="!dataadd && !row.selected">{{row.locationName}}</td>
-								<td ng-if="dataadd || row.selected"><input
+								<td ng-if="dataadd || row.selected"><input id="locName"
 							type="text" class="form-control" ng-model="row.locationName"/></td>
 							<td
 							ng-if="!dataadd && !row.selected">{{row.locationDesc}}</td>
-						<td ng-if="dataadd || row.selected"><input
+						<td ng-if="dataadd || row.selected"><input id="locDesc"
 							type="text" class="form-control" ng-model="row.locationDesc"/></td>
 							<td
 							ng-if="!dataadd && !row.selected">{{row.active}}</td>
-						<td ng-if="dataadd || row.selected"><input
+						<td ng-if="dataadd || row.selected"><input id="locActive"
 							type="text" class="form-control" ng-model="row.active"/></td>
 							
 						
@@ -77,10 +77,10 @@
 	</div>
 	 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 buttonGroup">
-<button type="button" class="btn glass" ng-click="processAddRow()">
+<button type="button" id="addLocation" class="btn glass" ng-click="processAddRow()">
 		<span class="icon far fa-plus"></span> Add
 		</button>
-		<button type="button" class="btn glass" ng-click="processUpdate(rowCollection)" ng-hide="saveFlag">
+		<button type="button"  class="btn glass" ng-click="processUpdate(rowCollection)" ng-hide="saveFlag">
 		<span class="icon far fa-save"></span>Update
 		</button>
 		
@@ -88,10 +88,10 @@
 		<span class="icon far fa-save"></span>Delete
 		</button>
 		
-		<button type="button" class="btn glass" ng-click="processSave(rowCollection)" ng-show="saveFlag">
+		<button type="button" id="saveLocation" class="btn glass" ng-click="processSave(rowCollection)" ng-show="saveFlag">
 		<span class="icon far fa-save"></span>Save
 		</button>
-		<button type="button" class="btn glass" ng-click="refresh()">
+		<button type="button" id="refresh" class="btn glass" ng-click="refresh()">
 		<span class="icon far fa-undo"></span> Refresh
 		</button>
 </div>
