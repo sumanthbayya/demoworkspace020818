@@ -35,7 +35,7 @@ Then Import as Existing projects into IDE with project root workspace and start 
 ## Pivotal cloud foundry deployment.
 * Install pivotal cloud foundry(PCF) console in .msi format for windows.
 * Login to pcf
-Step : 1 	
+	
 cmd line for running - cf login -a api.run.pivotal.io
 itll as username and pswrd
 
