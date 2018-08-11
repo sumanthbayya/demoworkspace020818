@@ -1,0 +1,24 @@
+<nav ng-class="getNavStyle(scroll)"  >
+  <button class="glass" ng-click="goPrevious()"><span>&lt;</span></button>
+  Page: <input type="text" min=1 ng-model="pageNum" style="width:80px !important;display: initial;">  / {{pageCount}}
+  <button class="glass" ng-click="goNext()"><span>&gt;</span></button>
+  
+<button ng-click="fit()" class="glass"><span>Fit</span></button>
+  <button ng-click="zoomIn()" class="glass"><span class="icon fas fa-search-plus"></span></button>
+  
+  <button ng-click="zoomOut()" class="glass"><span class="icon fas fa-search-minus"></span></button>
+  <button ng-click="rotate()" class="glass"><span class="icon"></span>Rotate</button>
+  <!-- <span class="glyphicon glyphicon glyphicon-screenshot iconStyle"  ng-click="faultTrigger()" aria-hidden="true"></span> -->
+<!-- <input type="text" title="{{searchPdf}}"   ng-model="searchWord" style="width:110px !important;display: initial;">
+   <button ng-click="searchNext()" class="glass">Next<span class="icon fas fa-search" style="padding-left: 0.3em;"></span></button> -->
+<!-- 
+   -->
+  <!-- <span>Document URL: </span>
+  <input type="text" ng-model="pdfUrl"> -->
+</nav>
+
+<hr>
+
+<!-- <div class="image-responsive">
+{{loading}}
+</div> -->

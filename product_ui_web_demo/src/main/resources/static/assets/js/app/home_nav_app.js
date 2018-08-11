@@ -1,4 +1,4 @@
-var productApp = angular.module('productApp', [ 'ngRoute', 'smart-table','ui.bootstrap', 'ngSanitize','ngAnimate' ]);
+var productApp = angular.module('productApp', [ 'ngRoute', 'smart-table','ui.bootstrap', 'ngSanitize','ngAnimate','pdf' ]);
 
 
 
@@ -30,6 +30,10 @@ productApp.config(function($routeProvider) {
 	.when('/ship', {
 		templateUrl : 'views/ship.html',
 		controller : 'shipController'
+	})
+	.when('/reference', {
+		templateUrl : 'views/pdfViewSample.html',
+		controller : 'referenceController'
 	})
 	.when('/run', {
 		templateUrl : 'views/run.html',
