@@ -59,7 +59,7 @@ productApp.controller("homeController",[
 										id:'1',
 									username : $scope.username,
 									password : $scope.password,
-									activeflag : 'y'
+									active : 'y'
 									}
 									
 								;
@@ -73,6 +73,7 @@ productApp.controller("homeController",[
 												$scope.message='Hi '+$scope.user.username + ', Welcome';
 												$scope.$digest();
 												$timeout(function () {
+													$scope.message= null;
 													angular.element('#loginScreen').modal('hide');
 											    }, 2000);
 							  				}
@@ -98,7 +99,7 @@ productApp.controller("homeController",[
 									id:'1',
 								username : $scope.username,
 								password : $scope.password,
-								activeflag : 'y'
+								active : 'y'
 								}
 								
 							;
@@ -111,6 +112,7 @@ productApp.controller("homeController",[
 												$scope.message='Hi '+$scope.user.username + '. Welcome, Signup successful';
 												$scope.$digest();
 												$timeout(function () {
+													$scope.message= null;
 													angular.element('#loginScreen').modal('hide');
 											    }, 2000);
 //							  					

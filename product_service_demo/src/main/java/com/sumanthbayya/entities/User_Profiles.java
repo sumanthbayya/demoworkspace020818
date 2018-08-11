@@ -20,7 +20,7 @@ public class User_Profiles implements Serializable{
 
 	@Id
 	@Column(name="userid")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long userId;
 	
 	@Column(name="username")
@@ -30,8 +30,12 @@ public class User_Profiles implements Serializable{
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="user_active")
-	private String userActiveFlag;
+	@Column(name="active")
+	private String active;
+
+	public User_Profiles() {
+		
+	}
 
 	public Long getUserId() {
 		return userId;
@@ -57,15 +61,13 @@ public class User_Profiles implements Serializable{
 		this.password = password;
 	}
 
-	public String getUserActiveFlag() {
-		return userActiveFlag;
+	public String getActive() {
+		return active;
 	}
 
-	public void setUserActiveFlag(String userActiveFlag) {
-		this.userActiveFlag = userActiveFlag;
+	public void setActive(String active) {
+		this.active = active;
 	}
 
-	public User_Profiles() {
-		
-	}
+	
 }

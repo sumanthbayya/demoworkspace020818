@@ -4,7 +4,7 @@ public class UserVo {
 	private String id;
 	private String username;
 	private String password;
-	private String activeflag;
+	private String active;
 	public String getUsername() {
 		return username;
 	}
@@ -17,13 +17,14 @@ public class UserVo {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getActiveflag() {
-		return activeflag;
-	}
-	public void setActiveflag(String activeflag) {
-		this.activeflag = activeflag;
-	}
 	
+	
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
 	public String getId() {
 		return id;
 	}

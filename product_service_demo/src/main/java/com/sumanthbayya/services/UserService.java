@@ -27,7 +27,7 @@ public class UserService {
 			UserVo userObj = new UserVo();
 			userObj.setUsername(userDbObj.getUserName());
 			userObj.setPassword(userDbObj.getPassword());
-			userObj.setActiveflag(userDbObj.getUserActiveFlag());
+			userObj.setActive(userDbObj.getActive());
 			userVOList.add(userObj);
 		}
 		return userVOList;
@@ -39,7 +39,7 @@ public class UserService {
 		User_Profiles userObj = new User_Profiles();
 		userObj.setUserName(signupUser.getUsername());
 		userObj.setPassword(signupUser.getPassword());
-		userObj.setUserActiveFlag("y");
+		userObj.setActive("y");
 		List<UserVo> allUsersList= getUsersList();
 		for (UserVo userVo : allUsersList) {
 			if(userVo.getUsername().equals(signupUser.getUsername())){
