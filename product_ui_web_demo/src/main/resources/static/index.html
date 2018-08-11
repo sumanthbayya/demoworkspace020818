@@ -19,10 +19,15 @@
 <!--Angular Animate cdn  -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
 <script src="assets/js/lib/angular-route.js"></script>
+
+
 <!-- <script src="assets/js/lib/angular-translate.js"></script>
 <script src="assets/js/lib/angular-translate-loader-static-files.js"></script>
+ -->
+
+<!-- Notification Js -->
+<script src="assets/js/lib/lobibox.js"></script> 
 <script src="assets/js/lib/angular-indexed-db.js"></script>
-<script src="assets/js/lib/lobibox.js"></script> -->
 
 <!-- Boostrap libs -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -55,7 +60,7 @@
 <!--API End point Services  -->
 <script src="assets/js/app/services/locationServices.js"></script>
 <script src="assets/js/app/services/departmentServices.js"></script>
-
+<script src="assets/js/app/services/userLoginService.js"></script>
 
 <!--PDF Display  -->
 <script src="assets/js/lib/angular-pdf.js"></script>
@@ -92,6 +97,7 @@
 <script>window.angular || document.write(decodeURIComponent('%3Cscript src="js/angular.min.js"%3E%3C\/script%3E'))</script>
    <script src="assets/js/lib/dx.all.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.js"></script>
+
 <!-- Custom App CSS -->
 <link rel="stylesheet" href="assets/css/app/customcomponents.css"></link>
 
@@ -149,6 +155,67 @@
 					<div ng-view></div>
 				</section>
 			</div>
+			
+			
+			<!--Pop up for login  -->
+	<div class="modal fade" id="loginScreen" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+		data-backdrop="static">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				 <div class="modal-header" style="    height: 57px !important;">
+                 <div class="row">
+                 <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
+                 </div>
+                <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
+              <a href="#!" class="logo" style="margin-top: 7px;"><img
+							src="assets/images/inmarlogo.png" alt=""
+							style="margin-top: -18px; !important; width: 55px !important;" /> </a>
+                    </div>
+               <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
+                 </div>
+                    <div class="col" style="margin-left: 34.2em !important; margin-top: -1.2em !important;">
+
+                    <!-- <button type="button" class="close btn glass" data-dismiss="modal"><span class="icon far fa-times"></span></button> -->
+                    </div>
+                    </div>
+                </div>
+				<div class="modal-body">
+					<div class="container">
+					
+
+        <h2 class="form-signin-heading" style="color:#2158af;padding-bottom: 20px;">Login </h2>
+        <label for="inputEmail" class="sr-only"> Username </label>
+        <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="username" required autofocus>
+        
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="password" required autofocus>
+        <div class="checkbox">
+        </div>
+        <button type="button" class="btn btn-block glass " type="submit" ng-click="signIn()" 
+						>Sign in </button>
+						
+						<button type="button" class="btn btn-block glass " type="submit" ng-click="signUp()"
+						>Sign Up </button>
+
+    </div>
+    
+    
+ 
+
+				</div>
+				<div class="modal-footer">
+
+						<!-- <button type="button" class="btn glass"
+						 data-dismiss="modal">Close </button> -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+			
+			
+			
 		</div>
 
 		<!-- Sidebar -->
@@ -194,55 +261,8 @@
 				</footer>
 
 			</div>
-			<!--Pop up for language selection  -->
 
-<!--Pop up for login  -->
-<div class="modal fade" id="loginScreen" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
-		data-backdrop="static">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				 <div class="modal-header" style="    height: 57px !important;">
-                 <div class="row">
-                 <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
-                 </div>
-                <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
-               <a href="#!" class="logo" style="margin-top: 7px;"><img
-							src="assets/images/inmarlogo.png" alt=""
-							style="margin-top: -10px; !important;width: 55px !important;" /> </a>
-                    </div>
-               <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
-                 </div>
-                    <div class="col" style="margin-left: 34.2em !important; margin-top: -1.2em !important;">
 
-                    </div>
-                    </div>
-                </div>
-				<div class="modal-body">
-					<div class="container">
-
-        <h2 class="form-signin-heading" style="color:#2158af;padding-bottom: 20px;">Login to IST</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="useridUI" required autofocus>
-        
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="passwordUI" required autofocus>
-        <div class="checkbox">
-        </div>
-        <button type="button" class="btn btn-block glass " type="submit" ng-click=""
-						>Sign in </button>
-
-    </div>
-
-				</div>
-				<div class="modal-footer">
-
-						<button type="button" class="btn glass"
-						 data-dismiss="modal">Close </button>
-
-				</div>
-			</div>
-		</div>
-	</div>
 		</div>
 
 	</div>

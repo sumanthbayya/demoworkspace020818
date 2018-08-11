@@ -43,16 +43,57 @@ productApp.config(function($routeProvider) {
 });
 
 productApp.controller("homeController",[
-						"$scope",
+						"$scope","$rootScope","userLoginService",
 						
-						function($scope) {
+						function($scope,$rootScope,userLoginService) {
+							$scope.signUpFlag = false;
+							$scope.username="";
+							$scope.password="";
+							$scope.activeflag="y";
+							$scope.user=[];
+							$scope.signIn = function(){
+								
+								$scope.user.username = $scope.username;
+								$scope.user.password=$scope.password;
+								$scope.user.activeflag=$scope.activeflag;
+								console.log($scope.user);
+								userLoginService.signInUser($scope.user).then(
+							  			function(data){
+							  				$scope.successSignInFlag = data;
+							  				console.log($scope.successSignInFlag);
+							  			},
+							  			function()
+											{
+											}
+							  			);
+								
+							}
 							
 							
+							$scope.signUp = function(){
+								$scope.user.username = $scope.username;
+								$scope.user.password=$scope.password;
+								$scope.user.activeflag=$scope.activeflag;
+								userLoginService.signUpUser($scope.user).then(
+							  			function(data){
+							  				$scope.successSignupFlag = data;
+							  				console.log($scope.successSignupFlag);
+							  			},
+							  			function()
+											{
+											}
+							  			);
+								console.log($scope.user);
+							}
 							
-							
+							if($rootScope.username == undefined){
+							angular.element('#loginScreen').modal('show');
+							}
 							
 							
 						} ]);
+
+
 
 
 
