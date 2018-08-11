@@ -24,17 +24,17 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value="/signup", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public boolean signupUser(@RequestBody UserVo userVo){
 		
-		return userService.singupUser(userVo);
+		 return userService.singupUser(userVo);
 	}
 	
 	
-	@RequestMapping(value="/signin", method = RequestMethod.POST)
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public boolean signInUser(@RequestBody UserVo userVo){
 		
-		return userService.userSigninCheck(userVo);
+		 return userService.userSigninCheck(userVo);
 	}
 	
 	

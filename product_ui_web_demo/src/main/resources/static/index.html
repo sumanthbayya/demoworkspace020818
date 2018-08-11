@@ -181,6 +181,28 @@
                     </div>
                 </div>
 				<div class="modal-body">
+				<div class="row" id="messages">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+			style="padding-left: 0px; padding-right: 0px;">
+			<div id="messages_save_succ"
+				class="alert alert-success icon far fa-check" role="alert"
+				data-ng-show="message">
+				{{message}} <a class="clear" ng-click="message=null">
+					<span class="alertSuccess glyphicon glyphicon-remove"></span>
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+			style="padding-left: 0px; padding-right: 0px;">
+			<div id="messages_save_error"
+				class="alert alert-danger icon far fa-times" role="alert"
+				data-ng-show="reqErrMsg">
+				{{ reqErrMsg }} <a class="clear"
+					ng-click="reqErrMsg=null"> <span
+					class="alertCancel glyphicon glyphicon-remove"></span></a>
+			</div>
+		</div>
+	</div>
 					<div class="container">
 					
 
@@ -192,10 +214,10 @@
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="password" required autofocus>
         <div class="checkbox">
         </div>
-        <button type="button" class="btn btn-block glass " type="submit" ng-click="signIn()" 
+        <button type="button" class="btn btn-block glass "  ng-click="signIn()" 
 						>Sign in </button>
 						
-						<button type="button" class="btn btn-block glass " type="submit" ng-click="signUp()"
+						<button type="button" class="btn btn-block glass "  ng-click="signUp()"
 						>Sign Up </button>
 
     </div>

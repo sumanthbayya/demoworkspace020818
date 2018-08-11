@@ -43,52 +43,102 @@ productApp.config(function($routeProvider) {
 });
 
 productApp.controller("homeController",[
-						"$scope","$rootScope","userLoginService",
+						"$scope","$rootScope","userLoginService","$timeout",
 						
-						function($scope,$rootScope,userLoginService) {
+						function($scope,$rootScope,userLoginService,$timeout) {
+
+									
 							$scope.signUpFlag = false;
-							$scope.username="";
-							$scope.password="";
-							$scope.activeflag="y";
-							$scope.user=[];
+							$scope.username = "";
+							$scope.password = "";
 							$scope.signIn = function(){
-								
-								$scope.user.username = $scope.username;
-								$scope.user.password=$scope.password;
-								$scope.user.activeflag=$scope.activeflag;
+								$scope.message=null;
+								$scope.reqErrMsg = null;
+								$scope.user=
+									{
+										id:'1',
+									username : $scope.username,
+									password : $scope.password,
+									activeflag : 'y'
+									}
+									
+								;
 								console.log($scope.user);
 								userLoginService.signInUser($scope.user).then(
 							  			function(data){
 							  				$scope.successSignInFlag = data;
 							  				console.log($scope.successSignInFlag);
+							  				if($scope.successSignInFlag == true){
+							  				
+												$scope.message='Hi '+$scope.user.username + ', Welcome';
+												$scope.$digest();
+												$timeout(function () {
+													angular.element('#loginScreen').modal('hide');
+											    }, 2000);
+							  				}
+							  				else{
+							  					$scope.reqErrMsg ='Username / password is incorrect';
+							  					$scope.$digest();
+							  				}
 							  			},
 							  			function()
 											{
 											}
 							  			);
 								
+								
 							}
 							
 							
 							$scope.signUp = function(){
-								$scope.user.username = $scope.username;
-								$scope.user.password=$scope.password;
-								$scope.user.activeflag=$scope.activeflag;
+								$scope.message=null;
+								$scope.reqErrMsg = null;
+								$scope.user=
+								{
+									id:'1',
+								username : $scope.username,
+								password : $scope.password,
+								activeflag : 'y'
+								}
+								
+							;
 								userLoginService.signUpUser($scope.user).then(
 							  			function(data){
 							  				$scope.successSignupFlag = data;
 							  				console.log($scope.successSignupFlag);
+							  				if($scope.successSignupFlag == true){
+							  					
+												$scope.message='Hi '+$scope.user.username + '. Welcome, Signup successful';
+												$scope.$digest();
+												$timeout(function () {
+													angular.element('#loginScreen').modal('hide');
+											    }, 2000);
+//							  					
+							  				}
+							  				else{
+							  					
+							  					$scope.reqErrMsg='Already Signed up ! Please Sign in !!';
+							  					$scope.$digest();
+							  				}
+							  				
 							  			},
 							  			function()
 											{
 											}
 							  			);
+								
 								console.log($scope.user);
 							}
 							
 							if($rootScope.username == undefined){
 							angular.element('#loginScreen').modal('show');
 							}
+							
+							
+							
+							
+							
+							
 							
 							
 						} ]);

@@ -1,7 +1,7 @@
 package com.sumanthbayya.vo;
 
 public class UserVo {
-	
+	private String id;
 	private String username;
 	private String password;
 	private String activeflag;
@@ -24,5 +24,11 @@ public class UserVo {
 		this.activeflag = activeflag;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 
 }
