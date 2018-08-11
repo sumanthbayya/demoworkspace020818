@@ -34,7 +34,16 @@ Then Import as Existing projects into IDE with project root workspace and start 
 ### Deployment
 ## Pivotal cloud foundry deployment.
 * Install pivotal cloud foundry(PCF) console in .msi format for windows.
-* In command line type this command in root folder of jar: cf push my-application -p target/my-application-version.jar
+* Login to pcf
+	
+cmd line for running - cf login -a api.run.pivotal.io
+command will ask username and password
+
+* Pushing jar
+			    (project-name)
+  cf push restsumantht -p demo-restful-1.0.0-spring-boot.jar
+ 
+ * Get the end point route url from pivotal console and run ! 
 
 
 ## Built With
