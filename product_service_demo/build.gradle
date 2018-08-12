@@ -36,8 +36,6 @@ dependencies {
 	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.15.Final'    
     compile group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '6.2.2.jre8'
 	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
-	compile group : 'de.codecentric' , name : 'spring-boot-admin-starter-ui', version : '1.5.1'
-    compile group : 'de.codecentric' , name : 'spring-boot-admin-starter', version : '1.5.1'
 }
 
 dependencyManagement {
