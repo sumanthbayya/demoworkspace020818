@@ -7,7 +7,7 @@ productApp.service("locationService",['$http',function($http){
 	this.getAllLocations = function() { 
 		return new Promise(function(resolve,reject){
 			
-			$http.get('https://inmardemo.cfapps.io/api/v1/location').then(
+			$http.get('http://localhost:9010/api/v1/location').then(
 				function(response){
 					resolve(response.data);
 					
@@ -24,7 +24,7 @@ productApp.service("locationService",['$http',function($http){
 		
 		return new Promise(function(resolve,reject){
 			
-			$http.get('https://inmardemo.cfapps.io/api/v1/location/{'+id+'}/department').then(
+			$http.get('http://localhost:9010/api/v1/location/{'+id+'}/department').then(
 				function(response){
 					resolve(response.data);
 				},
@@ -41,7 +41,7 @@ productApp.service("locationService",['$http',function($http){
 		
 		return new Promise(function(resolve,reject){
 			
-			$http.post('https://inmardemo.cfapps.io/api/v1/location/addLocations',data).then(
+			$http.post('http://localhost:9010/api/v1/location/addLocations',data).then(
 				function(response){
 					resolve(response.data);
 				},
@@ -60,7 +60,7 @@ productApp.service("locationService",['$http',function($http){
 			
 			return new Promise(function(resolve,reject){
 				
-				$http.post('https://inmardemo.cfapps.io/api/v1/location/updateLocations',data).then(
+				$http.post('http://localhost:9010/api/v1/location/updateLocations',data).then(
 					function(response){
 						resolve(response.data);
 					},
@@ -79,7 +79,7 @@ productApp.service("locationService",['$http',function($http){
 					
 					return new Promise(function(resolve,reject){
 						
-						$http.delete('https://inmardemo.cfapps.io/api/v1/location/'+id+'/department').then(
+						$http.delete('http://localhost:9010/api/v1/location/'+id+'/department').then(
 							function(response){
 								resolve(response.data);
 							},

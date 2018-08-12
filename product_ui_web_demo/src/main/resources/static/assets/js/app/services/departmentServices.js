@@ -8,7 +8,7 @@ productApp.service("departmentService",['$http',function($http){
 	this.getAllDepartments = function() { 
 		return new Promise(function(resolve,reject){
 			
-			$http.get('https://inmardemo.cfapps.io/api/v1/department').then(
+			$http.get('http://localhost:9010/api/v1/department').then(
 				function(response){
 					resolve(response.data);
 					
@@ -25,7 +25,7 @@ productApp.service("departmentService",['$http',function($http){
 			
 			return new Promise(function(resolve,reject){
 				
-				$http.post('https://inmardemo.cfapps.io/api/v1/department/addDepartments',data).then(
+				$http.post('http://localhost:9010/api/v1/department/addDepartments',data).then(
 					function(response){
 						resolve(response.data);
 					},
@@ -44,7 +44,7 @@ productApp.service("departmentService",['$http',function($http){
 				
 				return new Promise(function(resolve,reject){
 					
-					$http.post('https://inmardemo.cfapps.io/api/v1/department/updateDepartments',data).then(
+					$http.post('http://localhost:9010/api/v1/department/updateDepartments',data).then(
 						function(response){
 							resolve(response.data);
 						},
@@ -63,7 +63,7 @@ productApp.service("departmentService",['$http',function($http){
 						
 						return new Promise(function(resolve,reject){
 							
-							$http.delete('https://inmardemo.cfapps.io/api/v1/location/'+id+'/department/'+id+'/category').then(
+							$http.delete('http://localhost:9010/api/v1/location/'+id+'/department/'+id+'/category').then(
 								function(response){
 									resolve(response.data);
 								},
