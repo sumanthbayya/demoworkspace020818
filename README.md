@@ -44,6 +44,9 @@ command will ask username and password
   cf push restsumantht -p demo-restful-1.0.0-spring-boot.jar
  
  * Get the end point route url from pivotal console and run ! 
+ 
+ ## Application Deployed URL:
+ * http://inmardemoui.cfapps.io/DemoUiWeb
 
 
 ## Built With
