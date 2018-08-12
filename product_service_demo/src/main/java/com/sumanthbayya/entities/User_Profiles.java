@@ -19,8 +19,8 @@ public class User_Profiles implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="userid")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long userId;
 	
 	@Column(name="username")

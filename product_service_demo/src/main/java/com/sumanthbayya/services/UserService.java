@@ -37,15 +37,17 @@ public class UserService {
 	public boolean singupUser(UserVo signupUser){
 		
 		User_Profiles userObj = new User_Profiles();
-		userObj.setUserName(signupUser.getUsername());
-		userObj.setPassword(signupUser.getPassword());
-		userObj.setActive("y");
 		List<UserVo> allUsersList= getUsersList();
 		for (UserVo userVo : allUsersList) {
 			if(userVo.getUsername().equals(signupUser.getUsername())){
 				return false;
 			}
 		}
+		userObj.setUserName(signupUser.getUsername());
+		userObj.setPassword(signupUser.getPassword());
+		userObj.setActive("y");
+	
+		
 		userDao.save(userObj);
 		return true;
 		

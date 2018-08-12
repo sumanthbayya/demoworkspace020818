@@ -69,7 +69,7 @@ productApp.controller("homeController",[
 							  				$scope.successSignInFlag = data;
 							  				console.log($scope.successSignInFlag);
 							  				if($scope.successSignInFlag == true){
-							  				
+							  					$rootScope.username = $scope.user.username;
 												$scope.message='Hi '+$scope.user.username + ', Welcome';
 												$scope.$digest();
 												$timeout(function () {
@@ -107,6 +107,7 @@ productApp.controller("homeController",[
 							  			function(data){
 							  				$scope.successSignupFlag = data;
 							  				console.log($scope.successSignupFlag);
+							  				$rootScope.username = $scope.user.username;
 							  				if($scope.successSignupFlag == true){
 							  					
 												$scope.message='Hi '+$scope.user.username + '. Welcome, Signup successful';
