@@ -15,4 +15,6 @@ public interface SubCategoryDAO extends CrudRepository<Master_SubCategory, Long>
 
 	
 	List<Master_SubCategory> findByMasterSubCategoryIdAndCategory(Long masterSubCategoryId,Master_Category category);
+	
+	List<Master_SubCategory> findByCategory(Master_Category category);
 }

@@ -22,7 +22,14 @@ public interface DepartmentDAO extends CrudRepository<Master_Department, Long>{
 	@Query("delete FROM Master_Department t where t.masterDepartmentId = :#{#masterDepartmentId}") 
     void deleteDepatmentObjectManual(@Param("masterDepartmentId") Long masterDepartmentId);
 	
+	
+	@Modifying
+	@Query("delete FROM Master_Department t where t.location = :#{#location}") 
+    void deleteDepatmentObjectbyLocationManual(@Param("location") Master_Location location);
+	
 	Master_Department findByMasterDepartmentName(String masterDepartmentName);
 
 	List<Master_Department> findByLocation(Master_Location location);
+	
+	
 }

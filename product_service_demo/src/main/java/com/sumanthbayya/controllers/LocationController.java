@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sumanthbayya.entities.Master_Department;
 import com.sumanthbayya.services.CategoryService;
 import com.sumanthbayya.services.CommonService;
 import com.sumanthbayya.services.DepartmentService;
@@ -55,7 +56,7 @@ public class LocationController {
 	 * @returns LocationVo object
 	 * description : for fetching a single location object with id passed.
 	 */
-	@RequestMapping(value = "{id}/department", method = RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public LocationVo getOneLocation(@PathVariable Long id) {
 		return locationService.getLocationById(id);
 	}
@@ -64,17 +65,38 @@ public class LocationController {
 	 * @param location id
 	 * description : for deleting department with id passed.
 	 */
-	@RequestMapping(value = "{id}/department", method = RequestMethod.DELETE)
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public String deleteLocation(@PathVariable String id) {
 		return locationService.deleteLocation(id);
 	}
-
+	
+	/*
+	 * @param location id
+	 * @returns List<DepartmentVo>
+	 * description : for fetching a all department objects with location id passed.
+	 */
+	
+	@RequestMapping(value = "{id}/departments", method = RequestMethod.GET)
+	public List<Master_Department> getdepartmentByLocationId(@PathVariable Long id) {
+		return departmentService.getdepartmentByLocationId(id);
+	}
+	
+	
+	/*
+	 * @param location id
+	 * description : deletes departments with location id passed.
+	 */
+	
+	@RequestMapping(value = "{id}/departments", method = RequestMethod.DELETE)
+	public void deletedepartmentByLocationId(@PathVariable Long id) {
+		departmentService.deleteDepartmentByLocationId(id);
+	}
 	/*
 	 * @param location id and department id
 	 * @returns list<DepartmentVo>
 	 * description : for fetching one department object
 	 */
-	@RequestMapping(value = "{location_id}/department/{department_id}/category", method = RequestMethod.GET)
+	@RequestMapping(value = "{location_id}/department/{department_id}", method = RequestMethod.GET)
 	public List<DepartmentVo> getOneDepartment(@PathVariable String location_id, @PathVariable String department_id) {
 		return departmentService.getDepartmentByLocation(location_id, department_id);
 	}
@@ -83,32 +105,41 @@ public class LocationController {
 	 * @param location id and department id
 	 * description : for deleting departments with passed id
 	 */
-	@RequestMapping(value = "{location_id}/department/{department_id}/category", method = RequestMethod.DELETE)
+	@RequestMapping(value = "{location_id}/department/{department_id}", method = RequestMethod.DELETE)
 	public void deleteDepartment(@PathVariable String location_id, @PathVariable String department_id) {
 		departmentService.deleteDepartmentByLocation(department_id);
 	}
-
+	
+	
 	/*
-	 * @param location id, department id and category id
-	 * @returns List<CategoryVo>
-	 * description : for fetching one category object with id passed.
+	 * @param location id and department id
+	 * @returns list<DepartmentVo>
+	 * description : for fetching all categories with id passed.
 	 */
-	@RequestMapping(value = "{location_id}/department/{department_id}/category/{category_id}/subcategory", method = RequestMethod.GET)
-	public List<CategoryVo> getOneCategory(@PathVariable String location_id, @PathVariable String department_id,
-			@PathVariable String category_id) {
-		return categoryService.getCategoryByDepartmentAndLocation(location_id, department_id, category_id);
+	@RequestMapping(value = "{location_id}/department/{department_id}/category/{category_id}", method = RequestMethod.GET)
+	public List<CategoryVo> getOneCategory(@PathVariable String location_id, @PathVariable String department_id,@PathVariable String category_id) {
+		return categoryService.getOneCategoryByDepartmentAndLocation(location_id, department_id,category_id);
+	}
+	/*
+	 * @param location id and department id
+	 * @returns list<DepartmentVo>
+	 * description : for fetching all categories with id passed.
+	 */
+	@RequestMapping(value = "{location_id}/department/{department_id}/category", method = RequestMethod.GET)
+	public List<CategoryVo> getAllCategory(@PathVariable String location_id, @PathVariable String department_id) {
+		return categoryService.getCategoryByDepartmentAndLocation(location_id, department_id);
 	}
 
 	/*
-	 * @param location id department id and category id
-	 * description :  for deleting category passed parameters.
+	 * @param location id and department id
+	 * description : for deleting categories with id passed.
 	 */
-	@RequestMapping(value = "{location_id}/department/{department_id}/category/{category_id}/subcategory", method = RequestMethod.DELETE)
-	public void deleteCategory(@PathVariable String location_id, @PathVariable String department_id,
-			@PathVariable String category_id) {
-		categoryService.deleteCategoryByDepartmentAndLocation(category_id);
-
+	@RequestMapping(value = "{location_id}/department/{department_id}/category", method = RequestMethod.DELETE)
+	public void deleteAllCategory(@PathVariable String location_id, @PathVariable String department_id) {
+		categoryService.deleteCategoriesByDepartmentAndLocation(location_id,department_id);
 	}
+
+	
 
 	/*
 	 * @param location id department id category id and sub category id
@@ -131,6 +162,18 @@ public class LocationController {
 		subCategoryService.deleteSubCategoryByCategoryAndDepartmentAndLocation(subcategory_id);
 
 	}
+	
+	/*
+	 * @param location id, department id and category id
+	 * @returns List<SubCategoryVo>
+	 * description : for fetching all sub categories with id passed. 
+	 */
+	@RequestMapping(value = "{location_id}/department/{department_id}/category/{category_id}/subcategory", method = RequestMethod.GET)
+	public List<SubCategoryVo> getOneSubCategory(@PathVariable String location_id, @PathVariable String department_id,
+			@PathVariable String category_id) {
+		return subCategoryService.getAllSubCategoryByCategoryAndDepartmentAndLocation(location_id, department_id, category_id);
+	}
+
 
 	@RequestMapping(value = "/addLocations", method = RequestMethod.POST)
 	public String addLocations(@RequestBody List<LocationVo> locationList) {

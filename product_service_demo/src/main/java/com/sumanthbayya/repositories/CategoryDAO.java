@@ -14,5 +14,7 @@ import com.sumanthbayya.entities.Master_Department;
 public interface CategoryDAO extends CrudRepository<Master_Category, Long>{
 	
 	List<Master_Category> findByMasterCategoryIdAndDepartment(Long masterCategoryId,Master_Department department);
+	
+	List<Master_Category> findByDepartment(Master_Department department);
 
 }

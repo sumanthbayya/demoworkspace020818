@@ -36,12 +36,11 @@ public class CategoryService {
 	CommonService commonService;
 	
 
-	public List<CategoryVo> getCategoryByDepartmentAndLocation(String location_id, String department_id,String category_id) {
+	public List<CategoryVo> getOneCategoryByDepartmentAndLocation(String location_id, String department_id,String category_id) {
 	LOG.info("Getting locations and department wise categories");
 		List<Master_Category> catDBData = new ArrayList<>();
 		List<Master_Department> depsByLocationList = commonService.getDepartmentsByLocationId(Long.valueOf(location_id));
 		for (Master_Department master_Department : depsByLocationList) {
-//			categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department);
 			for (Master_Category master_category : categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department)) {
 				catDBData.add(master_category);
 			}
@@ -68,7 +67,37 @@ public class CategoryService {
 		categoryDao.deleteById(Long.valueOf(category_id));
 	}
 	
-	
+	public List<CategoryVo> getCategoryByDepartmentAndLocation(String location_id, String department_id) {
+		LOG.info("Getting locations and department wise categories");
+			List<Master_Category> catDBData = new ArrayList<>();
+			List<Master_Department> depsByLocationList = commonService.getDepartmentsByLocationId(Long.valueOf(location_id));
+			for (Master_Department master_Department : depsByLocationList) {
+				for (Master_Category master_category : categoryDao.findByDepartment(master_Department)) {
+					catDBData.add(master_category);
+				}
+			}
+			List<CategoryVo> uiDepVo  = new ArrayList<>();
+			for (Master_Category master_Category : catDBData) {
+				CategoryVo cvo = new CategoryVo();
+				cvo.setActiveFlag(master_Category.getMasterCatActiveFlag());
+				cvo.setCategoryDesc(master_Category.getMasterCategoryDesc());
+				cvo.setCategoryId(master_Category.getMasterCategoryId());
+				cvo.setCategoryName(master_Category.getMasterCategoryName());
+				cvo.setDepartmentId(master_Category.getDepartment().getMasterDepartmentId());
+				cvo.setDepartmentName(master_Category.getDepartment().getMasterDepartmentName());
+				cvo.setLocationId(master_Category.getDepartment().getLocation().getMasterLocationId());
+				cvo.setLocationName(master_Category.getDepartment().getLocation().getMasterLocationName());
+				uiDepVo.add(cvo);
+			}
+			
+			return uiDepVo;
+		}
+		
+		
+		public void deleteCategoriesByDepartmentAndLocation(String location_id, String department_id) {
+			categoryDao.deleteById(Long.valueOf(department_id));
+			
+		}
 	
 	
 	

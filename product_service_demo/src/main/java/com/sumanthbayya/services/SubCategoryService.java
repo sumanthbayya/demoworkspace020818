@@ -78,4 +78,47 @@ public class SubCategoryService {
 		subCategoryDao.deleteById(Long.valueOf(subcategory_id));
 		
 	}
+
+
+	public void deleteAllSubCategoryByCategoryAndDepartmentAndLocation(String category_id) {
+//		subCategoryDao.deleteById(Long.valueOf(subcategory_id));
+		
+	}
+	
+	
+	public List<SubCategoryVo> getAllSubCategoryByCategoryAndDepartmentAndLocation(String location_id, String department_id,String category_id) {
+
+		LOG.info("Getting locations and department wise categories");
+			List<Master_SubCategory> subcatDBData = new ArrayList<>();
+			List<Master_Department> depsByLocationList = commonService.getDepartmentsByLocationId(Long.valueOf(location_id));
+			for (Master_Department master_Department : depsByLocationList) {
+				categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department);
+				for (Master_Category master_category : categoryDao.findByMasterCategoryIdAndDepartment(Long.valueOf(category_id),master_Department)) {
+					// commonService.getCategoryByObjectId(master_category.getMasterCategoryId())
+					for (Master_SubCategory master_SubCategory : subCategoryDao.findByCategory(master_category)) {
+						subcatDBData.add(master_SubCategory);
+					}
+				}
+			}
+			List<SubCategoryVo> uiCatVo  = new ArrayList<>();
+			for (Master_SubCategory master_SubCategory : subcatDBData) {
+				SubCategoryVo scvo = new SubCategoryVo();
+				scvo.setActiveFlag(master_SubCategory.getMasterSubCatActiveFlag());
+				scvo.setCategoryId(master_SubCategory.getCategory().getMasterCategoryId());
+				scvo.setCategoryName(master_SubCategory.getCategory().getMasterCategoryName());
+				scvo.setDepartmentId(master_SubCategory.getCategory().getDepartment().getMasterDepartmentId());
+				scvo.setDepartmentName(master_SubCategory.getCategory().getDepartment().getMasterDepartmentName());
+				scvo.setLocationId(master_SubCategory.getCategory().getDepartment().getLocation().getMasterLocationId());
+				scvo.setLocationName(master_SubCategory.getCategory().getDepartment().getLocation().getMasterLocationName());
+				scvo.setId(master_SubCategory.getMasterSubCategoryId());
+				scvo.setSubCateogryName(master_SubCategory.getMasterSubCategoryName());
+				scvo.setSubCategoryDesc(master_SubCategory.getMasterSubCategoryName());
+				
+				
+				uiCatVo.add(scvo);
+			}
+			
+			return uiCatVo;
+		
+	}
 }

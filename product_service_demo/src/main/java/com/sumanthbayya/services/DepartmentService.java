@@ -110,5 +110,13 @@ public class DepartmentService {
 		}
 		return "saved locations";
 	}
+	public List<Master_Department> getdepartmentByLocationId(Long id) {
+		return departmentDAO.findByLocation(getLocationObjectById(String.valueOf(id)));
+	}
+	
+	public void deleteDepartmentByLocationId(Long id) {
+		
+		departmentDAO.deleteDepatmentObjectbyLocationManual(getLocationObjectById(String.valueOf(id)));
+	}
 	
 }
