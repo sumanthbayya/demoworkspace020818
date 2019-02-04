@@ -8,8 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 ## For Jars:
-* Download For API Services: https://drive.google.com/open?id=1ua1sblI-uD0gRBxVx32P9VErwBpLFIqf  - > product_service_demo-0.0.1-SNAPSHOT.jar 
-* Download For UI/UX: https://drive.google.com/open?id=1ua1sblI-uD0gRBxVx32P9VErwBpLFIqf -> product_ui_web_demo-0.0.1-SNAPSHOT.jar
+
 * Install Java 1.8 and setup class path.
 * Now run both jars with cmd prompt by using command : 
   For Example C:\product_workspace\demoworkspace020818\product_ui_web_demo>java -jar product_service_demo-0.0.1-SNAPSHOT.jar 
