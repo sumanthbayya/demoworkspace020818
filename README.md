@@ -45,8 +45,7 @@ command will ask username and password
  
  * Get the end point route url from pivotal console and run ! 
  
- ## Application Deployed URL:
- * http://inmardemoui.cfapps.io/DemoUiWeb
+
 
 
 ## Built With
