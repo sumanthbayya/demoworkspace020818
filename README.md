@@ -23,12 +23,7 @@ Then Import as Existing projects into IDE with project root workspace and start 
 ## URL For UI
 * http://localhost:9030/DemoUiWeb
 
-### API End point URL's
-* http://localhost:9010/api/v1/location,
-* http://localhost:9010/api/v1/location/{location_id}/department
-* http://localhost:9010/api/v1/location/{location_id}/department/{department_id}/category
-* http://localhost:9010/api/v1/location/{location_id}/department/{department_id}/category/{category_id}/subcategory
-* http://localhost:9010/api/v1/location/{location_id}/department/{department_id}/category/{category_id}/subcategory/{subcategory_id}
+
 
 ### Deployment
 ## Pivotal cloud foundry deployment.
